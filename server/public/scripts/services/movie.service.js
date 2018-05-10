@@ -22,15 +22,38 @@ app.service('MovieService', ['$http', function($http) {
         self.newMovie.genre_id = '';
     }
 
-    self.addMovie = function(newMovie) {
-        console.log('Adding to database: ', newMovie);
+    self.addMovie = function() {
+        console.log('Fetching poster url from TMDB');
+        var baseUrl = 'https://image.tmdb.org/t/p/w500';
+        $http({
+            method: 'GET',
+            url: 'https://api.themoviedb.org/3/search/movie',
+            params: {
+                api_key: '913c5b9e62af318acbd0e2b18f576ecf',
+                query: self.newMovie.title,
+            }
+        })
+        .then(function(response) {
+            var posterPath = response.data.results[0].poster_path;
+            var posterUrl = baseUrl + posterPath;
+            self.newMovie.image_url = posterUrl;
+            self.postMovie();
+        })
+        .catch(function(error) {
+            console.log('Error with TMDB search: ', error);
+        })
+    }
+
+    self.postMovie = function() {
+        console.log('Adding to database: ', self.newMovie);
         $http({
             method: 'POST',
             url: '/movie/add',
-            data: newMovie,
+            data: self.newMovie,
         })
         .then(function(response) {
             console.log('Successful POST: ', response);
+            self.getMovies();
             self.defaultInput();
         })
         .catch(function(error) {

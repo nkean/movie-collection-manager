@@ -1,6 +1,6 @@
 <div>
     <h3>Add Movie</h3>
-    <form ng-submit="vm.addMovie(vm.newMovie)">
+    <form ng-submit="vm.addMovie()">
         <input ng-model="vm.newMovie.title" type="text" placeholder="Movie Title"/>
         <select ng-model="vm.newMovie.genre_id" >
             <option value="">Choose a Genre</option>
@@ -25,9 +25,9 @@
             <tr ng-repeat="movie in vm.movies.list">
                 <td>{{movie.title}}</td>
                 <td>{{movie.genre_id}}</td>
-                <td>{{movie.release_date}}</td>
+                <td>{{movie.release_date | date: MM-dd-yyyy}}</td>
                 <td>{{movie.run_time}}</td>
-                <td>{{movie.image_url}}</td>
+                <td>{{movie.image_url}}</td> <!-- <img ng-src="{{movie.image_url}}"> -->
             </tr>
         </tbody>
     </table>
