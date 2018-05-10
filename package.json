@@ -1,0 +1,19 @@
+{
+  "name": "movie-collection-manager",
+  "version": "1.0.0",
+  "description": "Web application to manage a movie collection",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkean/movie-collection-manager.git"
+  },
+  "author": "Nathan Kean",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nkean/movie-collection-manager/issues"
+  },
+  "homepage": "https://github.com/nkean/movie-collection-manager#readme"
+}
