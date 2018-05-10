@@ -4,4 +4,7 @@ app.controller('MovieController', ['MovieService', function(MovieService) {
 
     self.newMovie = MovieService.newMovie;
     self.addMovie = MovieService.addMovie;
+    self.getMovies = MovieService.getMovies;
+    
+    self.getMovies();
 }]);

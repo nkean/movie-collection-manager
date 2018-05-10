@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const pool = require('../modules/pool');
 
+router.get('/all', (req, res) => {
+    var queryString = `SELECT * FROM "movies";`;
+    pool.query(queryString)
+        .then((response) => {
+            console.log(`Successful SELECT from "movies"`);
+            res.send(response.rows);
+        })
+        .catch((error) => {
+            console.log(`Error with SQL SELECT: ${error}`);
+            res.sendStatus(500);
+        })
+})
+
 router.post('/add', (req, res) => {
     var newMovie = req.body;
     var queryString = `INSERT INTO "movies" ("title", "release_date", "run_time", "image_url", "genre_id")

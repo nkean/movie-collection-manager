@@ -33,4 +33,18 @@ app.service('MovieService', ['$http', function($http) {
             console.log('Error with POST: ', error);
         })
     }
+
+    self.getMovies = function() {
+        console.log('Grabbing all movies from database');
+        $http({
+            method: 'GET',
+            url: '/movie/all',
+        })
+        .then(function(response) {
+            console.log('Successful GET: ', response.data);
+        })
+        .catch(function(error) {
+            console.log('Error with GET: ', error);
+        })
+    }
 }]);
