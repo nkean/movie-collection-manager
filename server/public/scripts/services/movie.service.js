@@ -6,7 +6,7 @@ app.service('MovieService', ['$http', function($http) {
         title: '',
         release_date: '',
         run_time: '',
-        image_url: 'http://lexingtonvenue.com/media/poster-placeholder.jpg',
+        image_url: '',
         genre_id: ''
     };
 
@@ -18,7 +18,7 @@ app.service('MovieService', ['$http', function($http) {
         self.newMovie.title = '';
         self.newMovie.release_date = '';
         self.newMovie.run_time = '';
-        // self.newMovie.image_url = '';
+        self.newMovie.image_url = '';
         self.newMovie.genre_id = '';
     }
 

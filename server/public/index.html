@@ -11,8 +11,11 @@
 
     <!-- Client Side -->
     <script src="scripts/client.js"></script>
-    <script src="scripts/controllers/movie.controller.js"></script>
     <script src="scripts/services/movie.service.js"></script>
+    <script src="scripts/services/genre.service.js"></script>
+    <script src="scripts/controllers/movie.controller.js"></script>
+    <script src="scripts/controllers/genre.controller.js"></script>
+    
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles/style.css">
@@ -22,6 +25,7 @@
 <body ng-app="MovieCollectionApp">
     <h1>Movie Collection Manager</h1>
     <a href="#!/movie">Movie</a>
+    <a href="#!/genre">Genre</a>
 
     <ng-view></ng-view>
 </body>
