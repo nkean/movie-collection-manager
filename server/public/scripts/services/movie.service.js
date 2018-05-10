@@ -24,7 +24,7 @@ app.service('MovieService', ['$http', function($http) {
 
     self.addMovie = function() {
         console.log('Fetching poster url from TMDB');
-        var baseUrl = 'https://image.tmdb.org/t/p/w500';
+        var baseUrl = 'https://image.tmdb.org/t/p/w185';
         $http({
             method: 'GET',
             url: 'https://api.themoviedb.org/3/search/movie',
