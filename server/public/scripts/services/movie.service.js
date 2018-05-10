@@ -10,6 +10,10 @@ app.service('MovieService', ['$http', function($http) {
         genre_id: ''
     };
 
+    self.movies = {
+        list: '',
+    };
+
     self.defaultInput = function() {
         self.newMovie.title = '';
         self.newMovie.release_date = '';
@@ -42,6 +46,7 @@ app.service('MovieService', ['$http', function($http) {
         })
         .then(function(response) {
             console.log('Successful GET: ', response.data);
+            self.movies.list = response.data;
         })
         .catch(function(error) {
             console.log('Error with GET: ', error);

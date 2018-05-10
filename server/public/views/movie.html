@@ -13,4 +13,22 @@
         <input ng-model="vm.newMovie.run_time" type="number" placeholder="Run time in minutes">
         <input type="submit" value="Submit">
     </form>
+    <table>
+        <thead>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+            <th>Run Time</th>
+            <th>Image URL</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="movie in vm.movies.list">
+                <td>{{movie.title}}</td>
+                <td>{{movie.genre_id}}</td>
+                <td>{{movie.release_date}}</td>
+                <td>{{movie.run_time}}</td>
+                <td>{{movie.image_url}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
