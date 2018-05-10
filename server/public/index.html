@@ -12,13 +12,17 @@
     <!-- Client Side -->
     <script src="scripts/client.js"></script>
     <script src="scripts/controllers/movie.controller.js"></script>
+    <script src="scripts/services/movie.service.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles/style.css">
 
     <title>Movie Collection Manager</title>
 </head>
-<body>
+<body ng-app="MovieCollectionApp">
     <h1>Movie Collection Manager</h1>
+    <a href="#!/movie">Movie</a>
+
+    <ng-view></ng-view>
 </body>
 </html>

@@ -1,0 +1,16 @@
+<div>
+    <h3>Add Movie</h3>
+    <form ng-submit="vm.addMovie(vm.newMovie)">
+        <input ng-model="vm.newMovie.title" type="text" placeholder="Movie Title"/>
+        <select ng-model="vm.newMovie.genre_id" >
+            <option value="">Choose a Genre</option>
+            <option value="1">Test 1</option>
+            <option value="2">Test 2</option>
+            <option value="3">Test 3</option>
+            <!-- <option ng-repeat="genre in vm.genreList" value="{{genre.id}}">{{genre.name}}</option> -->
+        </select>
+        <input ng-model="vm.newMovie.release_date" type="date"/>
+        <input ng-model="vm.newMovie.run_time" type="number" placeholder="Run time in minutes">
+        <input type="submit" value="Submit">
+    </form>
+</div>
