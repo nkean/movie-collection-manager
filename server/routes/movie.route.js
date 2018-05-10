@@ -29,4 +29,19 @@ router.post('/add', (req, res) => {
         })
 });
 
+router.delete('/delete', (req, res) => {
+    var removeMovie = req.query;
+    var queryString = `DELETE FROM "movies"
+                       WHERE "id" = $1;`;
+    pool.query(queryString, [removeMovie.id])
+        .then((response) => {
+            console.log(`Successful DELETE from "movies"`);
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error with SQL DELETE: ${error}`);
+            res.sendStatus(500);
+        })
+});
+
 module.exports = router;

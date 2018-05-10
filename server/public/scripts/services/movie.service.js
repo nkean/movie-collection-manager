@@ -75,4 +75,20 @@ app.service('MovieService', ['$http', function($http) {
             console.log('Error with GET: ', error);
         })
     }
+
+    self.deleteMovie = function(removeMovie) {
+        console.log('Deleting from database: ', removeMovie);
+        $http({
+            method: 'DELETE',
+            url: '/movie/delete',
+            params: removeMovie,
+        })
+        .then(function(response) {
+            console.log('Successful DELETE: ', response);
+            self.getMovies();
+        })
+        .catch(function(error) {
+            console.log('Error with DELETE: ', error);
+        })
+    }
 }]);

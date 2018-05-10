@@ -20,6 +20,7 @@
             <th>Release Date</th>
             <th>Run Time</th>
             <th>Image URL</th>
+            <th>Action</th>
         </thead>
         <tbody>
             <tr ng-repeat="movie in vm.movies.list">
@@ -28,6 +29,7 @@
                 <td>{{movie.release_date | date: MM-dd-yyyy}}</td>
                 <td>{{movie.run_time}}</td>
                 <td><img ng-src="{{movie.image_url}}"></td> <!-- <img ng-src="{{movie.image_url}}"> -->
+                <td><button ng-click="vm.deleteMovie(movie)">DELETE</button></td>
             </tr>
         </tbody>
     </table>
