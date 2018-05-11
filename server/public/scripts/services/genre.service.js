@@ -23,6 +23,7 @@ app.service('GenreService', ['$http', function($http) {
         })
         .then(function(response) {
             console.log('Successful POST: ', response);
+            self.getGenres();
             self.defaultInput();
         })
         .catch(function(error) {
@@ -30,4 +31,18 @@ app.service('GenreService', ['$http', function($http) {
         })
     }
 
+    self.getGenres = function() {
+        console.log('Grabbing all genres from the database');
+        $http({
+            method: 'GET',
+            url: '/genre/all',
+        })
+        .then(function(response) {
+            console.log('Successful GET: ', response.data);
+            self.genres.list = response.data;
+        })
+        .catch(function(error) {
+            console.log('Error with GET: ', error);
+        })
+    }
 }]);

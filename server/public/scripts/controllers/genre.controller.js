@@ -5,4 +5,7 @@ app.controller('GenreController', ['GenreService', function(GenreService) {
     self.genres = GenreService.genres;
     self.newGenre = GenreService.newGenre;
     self.addGenre = GenreService.addGenre;
+    self.getGenres = GenreService.getGenres;
+
+    self.getGenres();
 }]);
