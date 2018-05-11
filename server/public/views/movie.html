@@ -4,10 +4,7 @@
         <input ng-model="vm.newMovie.title" type="text" placeholder="Movie Title"/>
         <select ng-model="vm.newMovie.genre_id" >
             <option value="">Choose a Genre</option>
-            <option value="1">Test 1</option>
-            <option value="2">Test 2</option>
-            <option value="3">Test 3</option>
-            <!-- <option ng-repeat="genre in vm.genreList" value="{{genre.id}}">{{genre.name}}</option> -->
+            <option ng-repeat="genre in vm.genres.list" value="{{genre.id}}">{{genre.genre}}</option>
         </select>
         <input ng-model="vm.newMovie.release_date" type="date"/>
         <input ng-model="vm.newMovie.run_time" type="number" placeholder="Run time in minutes">
@@ -25,10 +22,10 @@
         <tbody>
             <tr ng-repeat="movie in vm.movies.list">
                 <td>{{movie.title}}</td>
-                <td>{{movie.genre_id}}</td>
-                <td>{{movie.release_date | date: MM-dd-yyyy}}</td>
-                <td>{{movie.run_time}}</td>
-                <td><img ng-src="{{movie.image_url}}"></td> <!-- <img ng-src="{{movie.image_url}}"> -->
+                <td>{{movie.genre}}</td>
+                <td>{{movie.release_date | date: "MM-dd-yyyy"}}</td>
+                <td>{{movie.run_time}} min.</td>
+                <td><img ng-src="{{movie.image_url}}"></td>
                 <td><button ng-click="vm.deleteMovie(movie)">DELETE</button></td>
             </tr>
         </tbody>

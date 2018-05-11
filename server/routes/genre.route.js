@@ -2,11 +2,13 @@ const router = require('express').Router();
 const pool = require('../modules/pool');
 
 router.get('/all', (req, res) => {
-    var queryString = `SELECT "movies"."id", "movies"."title", "movies"."release_date", "movies"."run_time", "movies"."image_url", "genres"."genre"  FROM "movies"
-                       JOIN "genres" ON "movies"."genre_id" = "genres"."id";`;
+    var queryString = `SELECT "genres"."id", "genres"."genre", COUNT("movies"."genre_id") FROM "movies"
+                       RIGHT JOIN "genres" ON "genres"."id" = "movies"."genre_id"
+                       GROUP BY "genres"."id"
+                       ORDER BY "genres"."genre";`
     pool.query(queryString)
         .then((response) => {
-            console.log(`Successful SELECT from "movies"`);
+            console.log(`Successful SELECT from "genres"`);
             res.send(response.rows);
         })
         .catch((error) => {
@@ -16,12 +18,12 @@ router.get('/all', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    var newMovie = req.body;
-    var queryString = `INSERT INTO "movies" ("title", "release_date", "run_time", "image_url", "genre_id")
-                       VALUES ($1, $2, $3, $4, $5);`;
-    pool.query(queryString, [newMovie.title, newMovie.release_date, newMovie.run_time, newMovie.image_url, newMovie.genre_id])
+    var newGenre = req.body;
+    var queryString = `INSERT INTO "genres" ("name")
+                       VALUES ($1);`;
+    pool.query(queryString, [newGenre.name])
         .then((response) => {
-            console.log(`Successful INSERT to "movies"`);
+            console.log(`Successful INSERT to "genres"`);
             res.sendStatus(201);
         })
         .catch((error) => {
@@ -31,12 +33,12 @@ router.post('/add', (req, res) => {
 });
 
 router.delete('/delete', (req, res) => {
-    var removeMovie = req.query;
-    var queryString = `DELETE FROM "movies"
+    var removeGenre = req.query;
+    var queryString = `DELETE FROM "genres"
                        WHERE "id" = $1;`;
-    pool.query(queryString, [removeMovie.id])
+    pool.query(queryString, [removeGenre.id])
         .then((response) => {
-            console.log(`Successful DELETE from "movies"`);
+            console.log(`Successful DELETE from "genres"`);
             res.sendStatus(200);
         })
         .catch((error) => {

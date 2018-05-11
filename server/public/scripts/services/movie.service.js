@@ -11,7 +11,7 @@ app.service('MovieService', ['$http', function($http) {
     };
 
     self.movies = {
-        list: '',
+        list: [],
     };
 
     self.defaultInput = function() {
