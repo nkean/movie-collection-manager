@@ -12,7 +12,7 @@ router.get('/all', (req, res) => {
             console.log(`Error with SQL SELECT: ${error}`);
             res.sendStatus(500);
         })
-})
+});
 
 router.post('/add', (req, res) => {
     var newMovie = req.body;

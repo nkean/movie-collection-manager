@@ -23,10 +23,11 @@ app.service('GenreService', ['$http', function($http) {
         })
         .then(function(response) {
             console.log('Successful POST: ', response);
+            self.defaultInput();
         })
         .catch(function(error) {
             console.log('Error with POST: ', error);
         })
     }
-    
+
 }]);
