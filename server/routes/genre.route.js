@@ -19,7 +19,7 @@ router.get('/all', (req, res) => {
 
 router.post('/add', (req, res) => {
     var newGenre = req.body;
-    var queryString = `INSERT INTO "genres" ("name")
+    var queryString = `INSERT INTO "genres" ("genre")
                        VALUES ($1);`;
     pool.query(queryString, [newGenre.name])
         .then((response) => {
