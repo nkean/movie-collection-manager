@@ -45,4 +45,24 @@ app.service('GenreService', ['$http', function($http) {
             console.log('Error with GET: ', error);
         })
     }
+
+    self.deleteGenre = function(removeGenre) {
+        console.log('Deleting from database: ', removeGenre);
+        if(removeGenre.count == 0) {
+            $http({
+                method: 'DELETE',
+                url: '/genre/delete',
+                params: removeGenre,
+            })
+            .then(function(response) {
+                console.log('Successful DELETE: ', response);
+                self.getGenres();
+            })
+            .catch(function(error) {
+                console.log('Error with DELETE: ', error);
+            })
+        } else {
+            alert('Genre Contains Movies! Cannot DELETE!')
+        }
+    }
 }]);

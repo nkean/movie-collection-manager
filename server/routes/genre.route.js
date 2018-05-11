@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 
 router.get('/all', (req, res) => {
     var queryString = `SELECT "genres"."id", "genres"."name", COUNT("movies"."genre_id") FROM "movies"
-                       JOIN "genres" ON "genres"."id" = "movies"."genre_id"
+                       RIGHT JOIN "genres" ON "genres"."id" = "movies"."genre_id"
                        GROUP BY "genres"."id"
                        ORDER BY "genres"."name";`
     pool.query(queryString)
@@ -28,6 +28,21 @@ router.post('/add', (req, res) => {
         })
         .catch((error) => {
             console.log(`Error with SQL INSERT: ${error}`);
+            res.sendStatus(500);
+        })
+});
+
+router.delete('/delete', (req, res) => {
+    var removeGenre = req.query;
+    var queryString = `DELETE FROM "genres"
+                       WHERE "id" = $1;`;
+    pool.query(queryString, [removeGenre.id])
+        .then((response) => {
+            console.log(`Successful DELETE from "genres"`);
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error with SQL DELETE: ${error}`);
             res.sendStatus(500);
         })
 });
