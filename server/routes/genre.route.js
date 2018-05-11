@@ -2,10 +2,10 @@ const router = require('express').Router();
 const pool = require('../modules/pool');
 
 router.get('/all', (req, res) => {
-    var queryString = `SELECT "genres"."id", "genres"."name", COUNT("movies"."genre_id") FROM "movies"
+    var queryString = `SELECT "genres"."id", "genres"."genre", COUNT("movies"."genre_id") FROM "movies"
                        RIGHT JOIN "genres" ON "genres"."id" = "movies"."genre_id"
                        GROUP BY "genres"."id"
-                       ORDER BY "genres"."name";`
+                       ORDER BY "genres"."genre";`
     pool.query(queryString)
         .then((response) => {
             console.log(`Successful SELECT from "genres"`);

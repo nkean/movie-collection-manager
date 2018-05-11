@@ -2,7 +2,8 @@ const router = require('express').Router();
 const pool = require('../modules/pool');
 
 router.get('/all', (req, res) => {
-    var queryString = `SELECT * FROM "movies";`;
+    var queryString = `SELECT "movies"."id", "movies"."title", "movies"."release_date", "movies"."run_time", "movies"."image_url", "genres"."genre"  FROM "movies"
+                       JOIN "genres" ON "movies"."genre_id" = "genres"."id";`;
     pool.query(queryString)
         .then((response) => {
             console.log(`Successful SELECT from "movies"`);
