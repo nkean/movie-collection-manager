@@ -26,9 +26,9 @@
             <tr ng-repeat="movie in vm.movies.list">
                 <td>{{movie.title}}</td>
                 <td>{{movie.genre_id}}</td>
-                <td>{{movie.release_date | date: MM-dd-yyyy}}</td>
-                <td>{{movie.run_time}}</td>
-                <td><img ng-src="{{movie.image_url}}"></td> <!-- <img ng-src="{{movie.image_url}}"> -->
+                <td>{{movie.release_date | date: "MM-dd-yyyy"}}</td>
+                <td>{{movie.run_time}} min.</td>
+                <td><img ng-src="{{movie.image_url}}"></td>
                 <td><button ng-click="vm.deleteMovie(movie)">DELETE</button></td>
             </tr>
         </tbody>

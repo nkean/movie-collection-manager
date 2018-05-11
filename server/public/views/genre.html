@@ -1,1 +1,22 @@
-<h1>Genre View</h1>
+<div>
+    <h3>Add Genre</h3>
+    <form ng-submit="vm.addGenre()">
+        <input ng-model="vm.newGenre" type="text" placeholder="Genre Name">
+        <input type="submit" value="Submit">
+    </form>
+    <h3>Genres</h3>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Total Movies</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <!-- <tr ng-repeat="genre in vm.genres.list">
+                <td>{{genre.name}}</td>
+                <td>{{genre.total}}</td>
+                <td><button ng-click="vm.deleteGenre(genre)">DELETE</button></td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>
