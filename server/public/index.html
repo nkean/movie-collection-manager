@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,25 +10,49 @@
     <script src="vendors/angular.js"></script>
     <script src="vendors/angular-route.js"></script>
 
+    <!-- Angular Material -->
+    <link rel="stylesheet" href="styles/angular-material.css">
+    <script src="vendors/angular-animate.js"></script>
+    <script src="vendors/angular-aria.js"></script>
+    <script src="vendors/angular-material.js"></script>
+    <script src="vendors/angular-messages.js"></script>
+
     <!-- Client Side -->
     <script src="scripts/client.js"></script>
     <script src="scripts/services/movie.service.js"></script>
     <script src="scripts/services/genre.service.js"></script>
     <script src="scripts/controllers/movie.controller.js"></script>
     <script src="scripts/controllers/genre.controller.js"></script>
-    
+    <script src="scripts/controllers/home.controller.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <title>Movie Collection Manager</title>
 </head>
-<body ng-app="MovieCollectionApp">
-    <h1>Movie Collection Manager</h1>
-    <a href="#!/">Home</a>
-    <a href="#!/movie">Movie</a>
-    <a href="#!/genre">Genre</a>
 
+<body ng-app="MovieCollectionApp" ng-cloak>
+    <md-content>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <i class="material-icons">video_library</i>
+                Movie Collection Manager
+            </div>
+        </md-toolbar class="md-padding">
+        <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-href="#!/" name="home">
+                Home
+            </md-nav-item>
+            <md-nav-item md-nav-href="#!/movie" name="movie">
+                Manage Movies
+            </md-nav-item>
+            <md-nav-item md-nav-href="#!/genre" name="genre">
+                Manage Genres
+            </md-nav-item>
+        </md-nav-bar>
+    </md-content>
     <ng-view></ng-view>
 </body>
+
 </html>

@@ -1,33 +1,54 @@
 <div>
-    <h3>Add Movie</h3>
-    <form ng-submit="vm.addMovie()">
-        <input ng-model="vm.newMovie.title" type="text" placeholder="Movie Title"/>
-        <select ng-model="vm.newMovie.genre_id" >
-            <option value="">Choose a Genre</option>
-            <option ng-repeat="genre in vm.genres.list" value="{{genre.id}}">{{genre.genre}}</option>
-        </select>
-        <input ng-model="vm.newMovie.release_date" type="date"/>
-        <input ng-model="vm.newMovie.run_time" type="number" placeholder="Run time in minutes">
-        <input type="submit" value="Submit">
-    </form>
-    <table>
-        <thead>
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Release Date</th>
-            <th>Run Time</th>
-            <th>Image URL</th>
-            <th>Action</th>
-        </thead>
-        <tbody>
-            <tr ng-repeat="movie in vm.movies.list">
-                <td>{{movie.title}}</td>
-                <td>{{movie.genre}}</td>
-                <td>{{movie.release_date | date: "MM-dd-yyyy"}}</td>
-                <td>{{movie.run_time}} min.</td>
-                <td><img ng-src="{{movie.image_url}}"></td>
-                <td><button ng-click="vm.deleteMovie(movie)">DELETE</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <md-content layout-padding>
+        <div>
+            <h2>Add Movie</h2>
+            <form layout-gt-sm="row" layout-align="start">
+                <md-input-container class="md-block">
+                    <label>Movie Title</label>
+                    <input ng-model="vm.newMovie.title" type="text" />
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Choose a Genre</label>
+                    <md-select ng-model="vm.newMovie.genre_id">
+                        <md-option ng-repeat="genre in vm.genres.list" value="{{genre.id}}">{{genre.genre}}</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Release Date</label>
+                    <md-datepicker ng-model="vm.newMovie.release_date" md-open-on-focus></md-datepicker>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Run Time in Minutes</label>
+                    <input ng-model="vm.newMovie.run_time" type="number">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <md-button class="md-raised md-primary md-hue-2" ng-click="vm.addMovie()">SUBMIT</md-button>
+                </md-input-container>
+            </form>
+        </div>
+    </md-content>
+
+    <div class="left-padding">
+        <h2>Movies</h2>
+    </div>
+
+    <md-content class="md-padding" layout="row" layout-wrap>
+        <md-card ng-repeat="movie in vm.movies.list" flex="15">
+            <img ng-src="{{movie.image_url}}" class="md-card-image">
+            <md-card-content align="center">
+                <p class="md-headline">{{movie.title}}</p>
+                <p>Genre: {{movie.genre}}</p>
+                <p>Released: {{movie.release_date | date: "MM-dd-yyyy"}}</p>
+                <p>Run Time: {{movie.run_time}} min</p>
+            </md-card-content>
+            <md-card-footer layout="row" layout-align="center">
+                <md-button class="md-raised md-warn md-hue-2" ng-click="vm.deleteMovie(movie)">DELETE</md-button>
+            </md-card-footer>
+        </md-card>
+    </md-content>
+
 </div>
