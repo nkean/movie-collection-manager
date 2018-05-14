@@ -1,3 +1,11 @@
 .left-padding {
     padding: 16px;
 }
+
+md-card {
+    width: 250px;
+}
+
+.center-this {
+    justify-content: center;
+}

@@ -36,8 +36,8 @@
         <h2>Movies</h2>
     </div>
 
-    <md-content class="md-padding" layout="row" layout-wrap>
-        <md-card ng-repeat="movie in vm.movies.list" flex="15">
+    <md-content class="md-padding center-this" layout="row" layout-wrap>
+        <md-card ng-repeat="movie in vm.movies.list">
             <img ng-src="{{movie.image_url}}" class="md-card-image">
             <md-card-content align="center">
                 <p class="md-headline">{{movie.title}}</p>
