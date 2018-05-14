@@ -2,10 +2,14 @@
     padding: 16px;
 }
 
-md-card {
+.center-this {
+    justify-content: center;
+}
+
+.movie-card {
     width: 250px;
 }
 
-.center-this {
-    justify-content: center;
+.genre-card {
+    width: 200px;
 }
