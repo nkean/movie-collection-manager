@@ -1,22 +1,36 @@
 <div>
-    <h3>Add Genre</h3>
-    <form ng-submit="vm.addGenre()">
-        <input ng-model="vm.newGenre.name" type="text" placeholder="Genre Name">
-        <input type="submit" value="Submit">
-    </form>
-    <h3>Genres</h3>
-    <table>
-        <thead>
-            <th>Name</th>
-            <th>Total Movies</th>
-            <th>Action</th>
-        </thead>
-        <tbody>
-            <tr ng-repeat="genre in vm.genres.list">
-                <td>{{genre.genre}}</td>
-                <td>{{genre.count}}</td>
-                <td><button ng-click="vm.deleteGenre(genre)">DELETE</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <md-content layout-padding>
+        <div>
+            <h2>Add Genre</h2>
+            <form layout-gt-sm="row" layout-align="start">
+                <md-input-container class="md-block">
+                    <label>Genre Name</label>
+                    <input ng-model="vm.newGenre.name" type="text">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <md-button class="md-raised md-primary md-hue-2" ng-click="vm.addGenre()">SUBMIT</md-button>
+                </md-input-container>
+            </form>
+        </div>
+    </md-content>
+
+    <div class="left-padding">
+        <h2>Genres</h2>
+    </div>
+
+    <md-content class="md-padding" layout="row" layout-wrap>
+        <md-card ng-repeat="genre in vm.genres.list" flex="15">
+            <md-card-title align="center">
+                <md-card-title-text>
+                    <span class="md-headline">{{genre.genre}}</span>
+                    <span class="md-subhead">Total movies: {{genre.count}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-footer layout="row" layout-align="center">
+                <md-button class="md-raised md-warn md-hue-2" ng-click="vm.deleteGenre(genre)">DELETE</md-button>
+            </md-card-footer>
+        </md-card>
+    </md-content>
+
 </div>
